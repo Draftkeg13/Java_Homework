@@ -18,8 +18,19 @@ public class HelloWorld {
             System.out.println("False");
         }
     }
+    public static void whatnumber() { // Третье задание
+        int check = 56;
+        if (check < 0) {
+            System.out.println("Вы ввели отрицательное число");
+        }
+        else {
+            System.out.println("Вы ввели положительное число");
+        }
+    }
+    
     public static void main(String[] args) {
         primer();
         checkrange();
+        whatnumber();
     }
 }
