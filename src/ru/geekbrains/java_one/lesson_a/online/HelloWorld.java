@@ -27,10 +27,14 @@ public class HelloWorld {
             System.out.println("Вы ввели положительное число");
         }
     }
-    
+    public static void gritings(){ // Четвёртое задание
+        String name = ("Victor");
+        System.out.println("Приветствуем Вас, " + name);
+    }
     public static void main(String[] args) {
         primer();
         checkrange();
         whatnumber();
+        gritings();
     }
 }
