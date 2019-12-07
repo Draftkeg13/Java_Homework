@@ -12,6 +12,8 @@ public class Lesson02 {
         arrRewrite(switchArray);
         arrFiller(fillArray);
         arrMultiplicator(multArray);
+        arrMax(multArray);
+        arrMin(multArray);
     }
     private static void arrRewrite(int[] switchArray){ //Меняем 0 на 1 или 1 на 0
         System.out.print("Switched Array: ");
@@ -36,5 +38,21 @@ public class Lesson02 {
              System.out.print(multArray[i] + " ");
          }
      }
+    private static void arrMax (int[] multArray){ // Поиск максимального значения в массиве
+        int max = multArray[0];
+        for (int i = 0; i < multArray.length; i++){
+            //max = Math.max(multArray[i], max);
+            max = (multArray[i] < max) ? max : multArray[i];
+        }
+        System.out.print("\nMax number in array " + max);
+    }
+    private static void arrMin (int[] multArray){ // Поиск минимального значения в массиве
+        int min = multArray[0];
+        for (int i = 0; i < multArray.length; i++){
+            //min = Math.min(multArray[i], min);
+            min = (multArray[i] > min) ? min : multArray[i];
+        }
+        System.out.print("\nMin number in array " + min);
+    }
 
 }
