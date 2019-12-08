@@ -10,12 +10,15 @@ public class Lesson02 {
         fillArray = new int[8];
         int[] multArray = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
         int[][] tableArray = new int[6][6];;
+        int[] balanceArray = {10, 1, 1, 1, 4, 2};
         arrRewrite(switchArray);
         arrFiller(fillArray);
         arrMultiplicator(multArray);
         arrMax(multArray);
         arrMin(multArray);
         arrTable(tableArray);
+        arrFindBalance(balanceArray);
+
     }
     private static void arrRewrite(int[] switchArray){ //Меняем 0 на 1 или 1 на 0
         System.out.print("Switched Array: ");
@@ -77,6 +80,26 @@ public class Lesson02 {
             System.out.println();
             }
         }
+        private static boolean arrFindBalance (int[] balanceArray){
+        boolean balance = false;
+        int summLeft = 0;
+        int index = balanceArray.length - 1;
+        for (int i = 0; i < balanceArray.length - 1; i++) {
+            int summRight = 0;
+            summLeft = summLeft + balanceArray[i]; // Считаем сумму чисел слева на право
+           System.out.print("Сумма слева " + summLeft + " "); // Вывод для проверки
+            for (int j = balanceArray.length - 1; j > i; j-- ){
+                summRight = summRight + balanceArray[j]; // Считаем сумму чисел справа на лево
+               System.out.print("Сумма справа " + summRight + " "); // Вывод для проверки
+                if (summLeft == summRight){
+                    balance = true;
+                }
+            }
+            System.out.println();
 
+        }
+        System.out.println(balance); // Вывод для проверки
+            return balance;
 
+        }
 }
