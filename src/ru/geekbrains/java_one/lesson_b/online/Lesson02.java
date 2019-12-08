@@ -10,7 +10,7 @@ public class Lesson02 {
         fillArray = new int[8];
         int[] multArray = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
         int[][] tableArray = new int[6][6];;
-        int[] balanceArray = {10, 1, 1, 1, 4, 2};
+        int[] balanceArray = {10, 1, 1, 1, 5, 2};
         arrRewrite(switchArray);
         arrFiller(fillArray);
         arrMultiplicator(multArray);
