@@ -11,6 +11,7 @@ public class Lesson02 {
         int[] multArray = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
         int[][] tableArray = new int[6][6];;
         int[] balanceArray = {10, 1, 1, 1, 5, 2};
+        int[] changeArray = {1, 2, 3, 4, 5, 6, 7, 8, 9};
         arrRewrite(switchArray);
         arrFiller(fillArray);
         arrMultiplicator(multArray);
@@ -18,6 +19,7 @@ public class Lesson02 {
         arrMin(multArray);
         arrTable(tableArray);
         arrFindBalance(balanceArray);
+        arrSwitch(changeArray);
 
     }
     private static void arrRewrite(int[] switchArray){ //Меняем 0 на 1 или 1 на 0
@@ -38,7 +40,7 @@ public class Lesson02 {
         }
         System.out.println();
      }
-     private static void arrMultiplicator (int[] multArray){ //Умножаем числа меньше 6 на 2, в массиве
+    private static void arrMultiplicator (int[] multArray){ //Умножаем числа меньше 6 на 2, в массиве
          System.out.print("Multiplied Array: ");
          for (int i = 0; i < multArray.length; i++){
              multArray[i] = (multArray[i] < 6) ? multArray[i] *= 2 : multArray[i];
@@ -80,7 +82,7 @@ public class Lesson02 {
             System.out.println();
             }
         }
-        private static boolean arrFindBalance (int[] balanceArray){
+    private static boolean arrFindBalance (int[] balanceArray){
         boolean balance = false;
         int summLeft = 0;
         int index = balanceArray.length - 1;
@@ -102,4 +104,19 @@ public class Lesson02 {
             return balance;
 
         }
+    private static void arrSwitch (int[] changeArray) {
+        int switchKey = 1;
+        int index = changeArray.length;
+             for (int i = 0; i < changeArray.length; i++) {
+
+             if ((i + switchKey) < changeArray.length){
+                 changeArray[i + switchKey] = changeArray[i];
+        }
+             else {
+                 changeArray[index - switchKey] = changeArray[i];
+             }
+             System.out.print(changeArray[i] +" ");
+        }
+
+    }
 }
