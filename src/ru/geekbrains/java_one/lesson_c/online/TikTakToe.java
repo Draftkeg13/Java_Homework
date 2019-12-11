@@ -14,10 +14,12 @@ public class TikTakToe {
     private static char[][] field;
     private static int fieldSizeX;
     private static int fieldSizeY;
+    private static int winLine;
 
     private static void initField() {
-        fieldSizeY = 3;
-        fieldSizeX = 3;
+        fieldSizeY = 5;
+        fieldSizeX = 5;
+        winLine = 4;
         field = new char[fieldSizeY][fieldSizeX];
         for (int y = 0; y < fieldSizeY; y++) {
             for (int x = 0; x < fieldSizeX; x++) {
@@ -48,7 +50,7 @@ public class TikTakToe {
         int x;
         int y;
         do {
-            System.out.println("Р’РІРµРґРёС‚Рµ, РїРѕР¶Р°Р»СѓР№СЃС‚Р°, РєРѕРѕСЂРґРёРЅР°С‚С‹ X РѕС‚ 1 РґРѕ 3 Рё Y РѕС‚ 1 РґРѕ 3 С‡РµСЂРµР· РїСЂРѕР±РµР»");
+            System.out.println("Введите координаты X и Y, через пробел, от 1 до 3, чтобы сделать ход");
             x = SCANNER.nextInt() - 1;
             y = SCANNER.nextInt() - 1;
         } while (!isValidCell(x, y) || !isEmptyCell(x, y));
@@ -75,10 +77,10 @@ public class TikTakToe {
 
     private static boolean checkWinLine(char c) {
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < winLine; i++) {
             boolean colum = true;
             boolean row = true;
-            for (int j = 0; j < 3; j++) {
+            for (int j = 0; j < winLine; j++) {
                 row &= (field[i][j] == c);
                 colum &= (field[j][i] == c);
             }
@@ -90,11 +92,21 @@ public class TikTakToe {
         int left = 0;
         int right = 0;
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < winLine; i++) {
             if (field[i][i] == c) left++;
-            if (field[3 - i - 1][i] == c) right++;
-            if (left == 3 || right == 3) return true;
+            if (field[winLine - i - 1][i] == c) right++;
+            if (left == winLine || right == winLine) return true;
         }
+        return false;
+    }
+    private static boolean checkWin (char c) {
+        for (int i = 0; i < fieldSizeY - winLine -1; i++) {
+            for (int j = 0; j < fieldSizeX - winLine -1; j++) {
+
+                if (checkWinDiag(c) || checkWinLine(c)) return true;
+            }
+        }
+
         return false;
     }
 
@@ -114,7 +126,7 @@ public class TikTakToe {
         while (true) {
             humanTurn();
             printField();
-            if (checkWinLine(DOT_HUMAN) || checkWinDiag(DOT_HUMAN)) {
+            if (checkWin(DOT_HUMAN)) {
                 System.out.println("Human win!");
                 break;
             }
@@ -124,7 +136,7 @@ public class TikTakToe {
             }
             aiTurn();
             printField();
-            if (checkWinLine(DOT_AI) || checkWinDiag(DOT_AI)) {
+            if (checkWin(DOT_AI)) {
                 System.out.println("Computer win!");
                 break;
             }
@@ -135,13 +147,4 @@ public class TikTakToe {
         }
     }
 
-    /*
-    1. РџРѕР»РЅРѕСЃС‚СЊСЋ СЂР°Р·РѕР±СЂР°С‚СЊСЃСЏ СЃ РєРѕРґРѕРј;
-    2. РџРµСЂРµРґРµР»Р°С‚СЊ РїСЂРѕРІРµСЂРєСѓ РїРѕР±РµРґС‹, С‡С‚РѕР±С‹ РѕРЅР° РЅРµ Р±С‹Р»Р° СЂРµР°Р»РёР·РѕРІР°РЅР°
-        РїСЂРѕСЃС‚Рѕ РЅР°Р±РѕСЂРѕРј СѓСЃР»РѕРІРёР№.
-    3. * РџРѕРїСЂРѕР±РѕРІР°С‚СЊ РїРµСЂРµРїРёСЃР°С‚СЊ Р»РѕРіРёРєСѓ РїСЂРѕРІРµСЂРєРё РїРѕР±РµРґС‹,
-        С‡С‚РѕР±С‹ РѕРЅР° СЂР°Р±РѕС‚Р°Р»Р° РґР»СЏ РїРѕР»СЏ 5С…5 Рё РєРѕР»РёС‡РµСЃС‚РІР° С„РёС€РµРє 4.
-    4. *** Р”РѕСЂР°Р±РѕС‚Р°С‚СЊ РёСЃРєСѓСЃСЃС‚РІРµРЅРЅС‹Р№ РёРЅС‚РµР»Р»РµРєС‚, С‡С‚РѕР±С‹ РѕРЅ РјРѕРі
-        Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ С…РѕРґС‹ РёРіСЂРѕРєР°, Рё РїС‹С‚Р°С‚СЊСЃСЏ РІС‹РёРіСЂР°С‚СЊ СЃР°Рј.
-    * */
 }
