@@ -73,17 +73,28 @@ public class TikTakToe {
         field[y][x] = DOT_AI;
     }
 
-    private static boolean checkWin(char c) {
-        if (field[0][0] == c && field[0][1] == c && field[0][2] == c) return true;
-        if (field[1][0] == c && field[1][1] == c && field[1][2] == c) return true;
-        if (field[2][0] == c && field[2][1] == c && field[2][2] == c) return true;
+    private static boolean checkWinLine(char c) {
 
-        if (field[0][0] == c && field[1][0] == c && field[2][0] == c) return true;
-        if (field[0][1] == c && field[1][1] == c && field[2][1] == c) return true;
-        if (field[0][2] == c && field[1][2] == c && field[2][2] == c) return true;
+        for (int i = 0; i < 3; i++) {
+            boolean colum = true;
+            boolean row = true;
+            for (int j = 0; j < 3; j++) {
+                row &= (field[i][j] == c);
+                colum &= (field[j][i] == c);
+            }
+            if (row || colum) return true;
+        }
+        return false;
+    }
+    private static boolean checkWinDiag(char c) {
+        int left = 0;
+        int right = 0;
 
-        if (field[0][0] == c && field[1][1] == c && field[2][2] == c) return true;
-        if (field[0][2] == c && field[1][1] == c && field[2][0] == c) return true;
+        for (int i = 0; i < 3; i++) {
+            if (field[i][i] == c) left++;
+            if (field[3 - i - 1][i] == c) right++;
+            if (left == 3 || right == 3) return true;
+        }
         return false;
     }
 
@@ -103,7 +114,7 @@ public class TikTakToe {
         while (true) {
             humanTurn();
             printField();
-            if (checkWin(DOT_HUMAN)) {
+            if (checkWinLine(DOT_HUMAN) || checkWinDiag(DOT_HUMAN)) {
                 System.out.println("Human win!");
                 break;
             }
@@ -113,7 +124,7 @@ public class TikTakToe {
             }
             aiTurn();
             printField();
-            if (checkWin(DOT_AI)) {
+            if (checkWinLine(DOT_AI) || checkWinDiag(DOT_AI)) {
                 System.out.println("Computer win!");
                 break;
             }
