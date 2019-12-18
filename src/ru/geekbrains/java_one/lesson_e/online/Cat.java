@@ -8,7 +8,7 @@ public class Cat extends Animal {
         this.jump = setJump();
     }
     @Override
-    public double setRun(){
+    public double setRun(){ //Определяю разброс параметра для бега
         run = 0;
         while (150 > run || run > 220){
             run = Math.random()*300;
@@ -16,11 +16,11 @@ public class Cat extends Animal {
         return run;
     }
     @Override
-    public void swimDistance(int distance){
+    public void swimDistance(int distance){ // Не плавают
         System.out.println("Котики не плавают");
     }
     @Override
-    public double setJump(){
+    public double setJump(){ //Определяю разброс параметра для прыжков
         jump = 0;
         while (1.5 > jump || jump > 2.2){
             jump = Math.random()*10;

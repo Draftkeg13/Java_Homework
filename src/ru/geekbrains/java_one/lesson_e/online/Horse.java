@@ -8,7 +8,7 @@ public class Horse extends Animal {
         this.jump = setJump();
     }
     @Override
-    public double setRun(){
+    public double setRun(){ //Определяю разброс параметра для бега
         run = 0;
         while (1300 > run || run > 1800){
             run = (Math.random()*10000);
@@ -16,7 +16,7 @@ public class Horse extends Animal {
         return run;
     }
     @Override
-    public double setSwim(){
+    public double setSwim(){ //Определяю разброс параметра для плавания
         swim = 0;
         while (80 > swim || swim > 150){
             swim = Math.random()*1000;
@@ -24,7 +24,7 @@ public class Horse extends Animal {
         return swim;
     }
     @Override
-    public double setJump(){
+    public double setJump(){ //Определяю разброс параметра для прыжков
         jump = 0;
         while (2.5 > jump || jump > 3.5){
             jump = Math.random()*100;

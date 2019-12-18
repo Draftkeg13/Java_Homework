@@ -6,10 +6,11 @@ public class Dog extends Animal {
         this.run = (int) setRun();
         this.swim = setSwim();
         this.jump = setJump();
+
     }
 
     @Override
-    public double setRun() {
+    public double setRun() { //Определяю разброс параметра для бега
         run = 0;
         while (400 > run || run > 600) {
             run = Math.random() * 1000;
@@ -17,7 +18,7 @@ public class Dog extends Animal {
         return run;
     }
     @Override
-    public double setSwim(){
+    public double setSwim(){ //Определяю разброс параметра для плавания
         swim = 0;
         while (8 > swim || swim > 15){
             swim = Math.random()*100;
@@ -25,7 +26,7 @@ public class Dog extends Animal {
         return swim;
     }
     @Override
-    public double setJump(){
+    public double setJump(){ //Определяю разброс параметра для прыжков
         jump = 0;
         while (0.4 > jump || jump > 0.6){
             jump = Math.random();
