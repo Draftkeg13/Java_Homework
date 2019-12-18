@@ -5,9 +5,6 @@ public class Animal {
      double run;
      double swim;
      double jump;
-     int minRun;
-     int maxRun;
-
 
     /* public Animal(String name, Float run, Float swim, Float jump){
           this.name = name;
