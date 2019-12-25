@@ -1,5 +1,6 @@
 package ru.geekbrains.java_one.lesson_g.online;
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,8 +18,13 @@ public class GameWindow extends JFrame {
         setTitle("Tic Tac Toe");
         JButton btnStart = new JButton("Start");
         JButton btnExit = new JButton("Exit");
-        JPanel panelBottom = new JPanel(new GridLayout(1, 2));
-        panelBottom.add(btnStart); panelBottom.add(btnExit);
+        //JPanel panelBottom = new JPanel(new GridLayout(1, 2));
+      //  JPanel panelLeft = new JPanel();
+      //  JPanel panelRight = new JPanel();
+        //panelBottom.add(btnStart);
+       // panelLeft.add(btnStart);
+        //panelBottom.add(btnExit);
+        //panelRight.add(btnExit);
         Settings settings = new Settings(this);
         map = new Map();
         btnExit.addActionListener(new ActionListener() {
@@ -31,7 +37,11 @@ public class GameWindow extends JFrame {
                 settings.setVisible(true);
             }
         }); add(map, BorderLayout.CENTER);
-        add(panelBottom, BorderLayout.SOUTH);
+       // add(panelLeft, BorderLayout.WEST);
+       // add(panelRight, BorderLayout.EAST);
+
+        add(btnStart, BorderLayout.WEST);
+        add(btnExit, BorderLayout.EAST);
         setVisible(true);
     }
     void startNewGame(int gameMode, int fieldSizeX, int fieldSizeY, int winLen) {
